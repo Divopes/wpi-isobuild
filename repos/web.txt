@@ -1,0 +1,15 @@
+# === SMART PARSERS ===
+https://www.videolan.org/vlc/
+https://telegram.org/dl/desktop/win64
+https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi
+https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=ru
+https://fraps.com/download.php
+https://www.qbittorrent.org/
+https://www.hwinfo.com/
+
+# === HASH CHECKS (Прямые ссылки) ===
+https://cdn.fastly.steamstatic.com/client/installer/SteamSetup.exe
+https://openvpn.net/downloads/openvpn-connect-v3-windows.msi
+https://aka.ms/vc14/vc_redist.x64.exe
+https://aka.ms/vc14/vc_redist.x86.exe
+https://revouninstaller.b-cdn.net/revosetup.exe
