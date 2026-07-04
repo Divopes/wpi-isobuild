@@ -195,9 +195,7 @@ pipeline {
                                         def dateNow = sh(script: "date +%Y-%m-%d", returnStdout: true).trim()
                                         logLines.add("${repo}|${latestVersion}|${dateNow}")
                                         writeFile file: env.LOG_FILE, text: logLines.join("\n") + "\n"
-
                                     } catch (Exception e) {
-                                        echo "   [ERROR] ${repo}: ${e.getMessage()}"
                                         sh "echo '=== RAW RESPONSE for ${repo} ===' && cat tmp/gh_response.json || echo '(file missing)'"
                                         currentBuild.result = 'UNSTABLE'
                                     }
