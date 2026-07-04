@@ -22,7 +22,7 @@ pipeline {
     parameters {
         booleanParam(
             name: 'has_github_auth',
-            defaultValue: true,
+            defaultValue: false,
             description: 'Use GitHub credentials (5000 req/h) and enable site deploy.'
         )
         booleanParam(
