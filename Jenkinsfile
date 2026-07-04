@@ -27,7 +27,7 @@ pipeline {
         )
         booleanParam(
             name: 'update_site',
-            defaultValue: false,
+            defaultValue: true,
             description: 'Deploy updated index.html to GitHub Pages after successful build.'
         )
     }
