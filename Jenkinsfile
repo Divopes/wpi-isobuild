@@ -38,7 +38,7 @@ pipeline {
         LOG_FILE        = "repos/wpi_log.log"
         GITHUB_LIST     = "repos/github.txt"
         WEB_LIST        = "repos/web.txt"
-        WPI_EOL_LINK    = "https://mega.nz/file/NZhwFZIA#GDWv3O8X_iSRw7_De67M2do8otRS-pnzdqFeWVHHCgk"
+        WPI_EOL_LINK    = "https://mega.nz/file/sR4DATKb#-1V_dsZFUNYcMRdrXK1KwJBZEJNBESITz5XlAqQrQ0M"
         WPI_SITE_REPO   = "Divopes/WPI-Site"
         MEGA_CREDS      = credentials('mega-account-creds')
     }
