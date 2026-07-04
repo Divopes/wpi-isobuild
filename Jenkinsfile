@@ -228,10 +228,10 @@ pipeline {
                                             mode = "SMART"
                                         }
                                         else if (line.contains("telegram.org")) {
-                                            def tg64 = sh(script: "curl -s -o /dev/null -w '%{redirect_url}' 'https://telegram.org/dl/desktop/win64'", returnStdout: true).trim()
-                                            if (tg64) urls.add(tg64)
-                                            def tg32 = sh(script: "curl -s -o /dev/null -w '%{redirect_url}' 'https://telegram.org/dl/desktop/win32'", returnStdout: true).trim()
-                                            if (tg32) urls.add(tg32)
+                                            def tg64 = sh(script: "curl -s --max-time 15 -o /dev/null -w '%{redirect_url}' 'https://telegram.org/dl/desktop/win64' || true", returnStdout: true).trim()
+                                            if (tg64 && tg64.startsWith("http")) urls.add(tg64)
+                                            def tg32 = sh(script: "curl -s --max-time 15 -o /dev/null -w '%{redirect_url}' 'https://telegram.org/dl/desktop/win32' || true", returnStdout: true).trim()
+                                            if (tg32 && tg32.startsWith("http")) urls.add(tg32)
                                             mode = "SMART"
                                         }
                                         else if (line.contains("epicgames.com")) {
