@@ -27,7 +27,7 @@ pipeline {
         )
         booleanParam(
             name: 'update_site',
-            defaultValue: true,
+            defaultValue: false,
             description: 'Deploy updated index.html to GitHub Pages after successful build.'
         )
     }
@@ -198,6 +198,7 @@ pipeline {
 
                                     } catch (Exception e) {
                                         echo "   [ERROR] ${repo}: ${e.getMessage()}"
+                                        sh "echo '=== RAW RESPONSE for ${repo} ===' && cat tmp/gh_response.json || echo '(file missing)'"
                                         currentBuild.result = 'UNSTABLE'
                                     }
                                 }
@@ -329,7 +330,8 @@ pipeline {
                     if (!fileExists("tmp/.has_updates")) {
                         echo "--- [ABORT] No updates found in any source. Stopping pipeline to save resources. ---"
                         currentBuild.result = 'ABORTED'
-                        throw new hudson.AbortException("No updates found in any source. Pipeline aborted.")
+                        currentBuild.description = 'ABORT_NO_UPDATES'
+                        error("ABORT_NO_UPDATES: No updates found in any source.")
                     }
                     echo "--- [PROCEED] Updates detected. Proceeding with ISO generation. ---"
                 }
@@ -500,7 +502,7 @@ pipeline {
     post {
         aborted {
             script {
-                if (FAILED_STAGE == 'Evaluate Updates') {
+                if (FAILED_STAGE == 'Evaluate Updates' || currentBuild.description?.contains('ABORT_NO_UPDATES')) {
                     def payload = """{
                       "embeds": [{
                         "title": "ℹ️ WPI Build Cancelled",
